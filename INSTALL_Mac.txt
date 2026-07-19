@@ -1,0 +1,60 @@
+DELTA BLIND — BETA (macOS only)
+=================================
+
+This is an early beta build. It is not yet notarized by Apple, so macOS
+will show a security warning the first time you use it. This is normal
+for an early-access indie plugin — here's how to get past it in ~30 seconds.
+
+Universal binary: works on both Apple Silicon (M1/M2/M3...) and Intel Macs.
+
+INSTALL
+-------
+
+1. Copy "Delta Blind.vst3" to:
+   ~/Library/Audio/Plug-Ins/VST3/
+
+2. Copy "Delta Blind.component" to:
+   ~/Library/Audio/Plug-Ins/Components/
+
+   (You can also use "Delta Blind.app" on its own — no DAW needed, use
+   its built-in TEST SIG button to try it without routing real audio.)
+
+3. Open Terminal (Applications > Utilities > Terminal) and run:
+
+   xattr -cr ~/Library/Audio/Plug-Ins/VST3/"Delta Blind.vst3"
+   xattr -cr ~/Library/Audio/Plug-Ins/Components/"Delta Blind.component"
+   xattr -cr /path/to/"Delta Blind.app"
+
+   This removes the "downloaded from the internet" flag that would
+   otherwise make Gatekeeper block an unsigned plugin. It does not
+   disable your Mac's security — it just tells macOS this specific
+   file is one you trust.
+
+4. Rescan plugins in your DAW (or restart it) — Delta Blind should now
+   show up under your effects.
+
+USING IT
+---------
+
+Delta Blind needs TWO audio sources to compare: the main input (source A)
+and a sidechain input (source B) — most DAWs let you route a sidechain
+from another track onto an insert. Pick A or B to hear it, toggle MATCH
+on to have B's level automatically trimmed to meet A's, so a preference
+between them reflects a real difference, not just "louder sounds better".
+
+No sidechain routed yet? Click the TEST SIG button in the plugin UI — it
+feeds a built-in A/B pair (B is +7dB louder than A) so you can hear MATCH
+working immediately, no setup required.
+
+TROUBLESHOOTING
+----------------
+
+If your DAW still refuses to load it: open System Settings > Privacy &
+Security, scroll down — you should see a message about "Delta Blind"
+being blocked, with an "Open Anyway" button. Click it once.
+
+QUESTIONS / BUGS
+-----------------
+
+This is a beta. If something sounds wrong or the matching/UI misbehaves,
+please report it — beta feedback directly shapes what ships in v1.
